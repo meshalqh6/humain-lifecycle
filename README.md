@@ -1,127 +1,111 @@
 # HUMAIN Lifecycle
 
-**People, connected. Powered by HUMAIN Chat.**
+Turn an employment contract into verified onboarding preparation.
 
-A working local employee lifecycle application for the Autonomous Enterprise challenge: React + TypeScript, FastAPI, PostgreSQL 17 in Docker, local Qwen through Ollama, and an authorized SMTP outbox. This is an independent hackathon project with HUMAIN-inspired styling, not an official HUMAIN product.
+HUMAIN Lifecycle is a working enterprise HR prototype for Challenge 3: Autonomous Enterprise. HUMAIN Chat understands an HR objective, coordinates authorized tools, saves the resulting records and verifies what actually happened. People retain responsibility for HR approvals and consequential decisions.
 
-## Quick start on Windows
+Start with the [demo walkthrough](docs/HACKATHON_DEMO.md), inspect the [latest test results](docs/SYSTEM_CHECK_2026-10-31.md), or open the [presentation PDF](submission/HUMAIN_Lifecycle_Presentation.pdf).
 
-Install Python 3.10+, Node.js 22+, Docker Desktop (WSL2 Linux containers), and Ollama. Docker Desktop must be running. See [Docker’s Windows installation guide](https://docs.docker.com/desktop/setup/install/windows-install/). The inspected laptop already had Docker and `qwen3.5:4b` installed; setup never downloads a model automatically.
+## The problem
 
-From this project directory:
+An incoming employment contract creates work across document review, company policy checks, employee records, HR tasks, IT coordination and communications. HUMAIN Lifecycle carries the context through those steps and makes progress, exceptions and execution evidence visible in one workspace.
+
+## How it works
+
+1. **Upload a contract.** Accept one supported text-based PDF, Excel or CSV document; retain its source bytes and fingerprint.
+2. **Describe the objective.** Ask HUMAIN Chat in English or Arabic to prepare onboarding and verify the outcome.
+3. **Validate and review.** Check required facts, inconsistencies and duplicates. Apply a selected administrator-activated company policy; pause for missing information, PDF review or policy exceptions.
+4. **Prepare onboarding.** Create employee and contract records, three human HR tasks and two explicitly simulated IT requests.
+5. **Communicate within authorization.** Use approved templates and recipients, with a durable outbox, SMTP receipts and duplicate-prevention controls.
+6. **Verify the outcome.** Inspect saved records, workflow steps, tasks and the audit trail. Human tasks remain pending until completed by people.
+
+Additional views provide deadline monitoring for contracts, Iqama and work permits, employee search and archiving, and descriptive Saudization ratios with profession-level drilldown.
+
+## Recorded results
+
+| Evidence | Recorded outcome |
+| --- | --- |
+| [Automated suite, 31 October 2026](docs/SYSTEM_CHECK_2026-10-31.md) | **101 passed:** 81 backend, 3 frontend unit and 17 browser tests |
+| Build and static checks | Ruff, ESLint, TypeScript, production build and Alembic schema checks passed |
+| Additional functional checks | 9 scope/routing checks passed; 23 live application API endpoints returned HTTP 200 |
+| [One recorded contract-to-onboarding run](docs/JOURNEY_LIVE_EVALUATION.json) | 37.036 seconds for the full agent request; 2.074 seconds for core workflow execution |
+| Persisted workflow outcome | 5 tasks: 3 pending human HR tasks and 2 simulated IT requests |
+| Email execution in that run | SMTP accepted; zero additional SMTP attempts when the verified workflow was repeated |
+
+The timings describe one demonstration, not an average or a held-out benchmark. SMTP acceptance alone does not confirm inbox delivery. Verified automation setup does not mean employee onboarding is complete. No measured human time savings or general PDF extraction accuracy is claimed.
+
+## Architecture
+
+The React and TypeScript interface calls FastAPI, which enforces permissions and coordinates host-local Ollama inference, PostgreSQL 17 persistence, and authorized SMTP or Mailpit delivery.
+
+One locally hosted language model coordinates specialized backend capabilities: contract intelligence, company policy validation, onboarding preparation, deadline monitoring and communications. Typed tools enforce permissions; PostgreSQL stores records, durable workflow state, outbox jobs and audit evidence. See the [architecture](docs/ARCHITECTURE.md) and [security notes](docs/SECURITY.md).
+
+## Run locally on Windows
+
+### Prerequisites
+
+- Python 3.10+ and Node.js 22+; the recorded workstation uses Python 3.10.11 and Node.js 24.12.0.
+- Docker Desktop running with WSL2 Linux containers.
+- Ollama installed and running on the host.
+- Microsoft Edge for the optional browser test suite.
+
+### Install and start
 
 ```powershell
+git clone https://github.com/meshalqh6/humain-lifecycle.git
+cd humain-lifecycle
+
+# Download the local model explicitly; setup does not download models.
+ollama pull qwen3.5:4b
+
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/setup.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start.ps1
 ```
 
-Open [the application](http://127.0.0.1:5173). Sign in as `admin` using `ADMIN_PASSWORD` from the generated, ignored `.env`. Do not share or commit that file. API documentation: [FastAPI OpenAPI](http://127.0.0.1:8000/docs). Local inbox: [Mailpit](http://127.0.0.1:8025).
+Open [HUMAIN Lifecycle](http://127.0.0.1:5173). Sign in as `admin` using `ADMIN_PASSWORD` from the generated local `.env` file. Setup generates credentials, installs dependencies, applies migrations and seeds 12 fictional employees. Repeating setup preserves the existing configuration and deduplicates the seed records.
 
-Setup generates strong database/test/auth/admin secrets, starts PostgreSQL and Mailpit, installs dependencies, applies Alembic migrations, and seeds 12 synthetic employees. Repeating it preserves existing configuration and deduplicates seed records. `requirements.lock.txt` and `package-lock.json` capture the tested environment. Default ports: PostgreSQL 55432, isolated test PostgreSQL 55433, SMTP 1025, inbox 8025, API 8000, frontend 5173. Port conflicts produce an error; configure `.env` and matching DATABASE_URL if a database port changes.
+| Local service | Address |
+| --- | --- |
+| Application | http://127.0.0.1:5173 |
+| API documentation | http://127.0.0.1:8000/docs |
+| Mailpit sandbox inbox | http://127.0.0.1:8025 |
 
-## What works
+Fresh setup defaults to sandbox email, using loopback SMTP and `.test` recipients. Real email requires explicit configuration and authorization in Settings. Keep `.env` and uploaded business documents out of Git. See the [operations guide](docs/OPERATIONS.md) for configuration, ports, email settings, backups and shutdown.
 
-* Database-backed employee creation, lookup, search, editing and soft archive APIs, with directory and profile UI. Previewed legacy CSV/XLSX roster imports use actual audited Sadiah date functions.
-* One-contract PDF/CSV/XLSX intake, source-byte persistence and SHA256 deduplication, structured extraction, missing/contradictory/date validation, review form, and source downloads.
-* Onboarding creates a durable employee and contract, five HR/IT request tasks, an approved welcome email, verified workflow steps and audit records. IT requests are explicitly simulated; human HR tasks remain pending after automation completes.
-* Contract, Iqama and work-permit deadline calculations include expired records and inclusive upcoming windows. Saudi nationality and profession ratios reuse Sadiah’s audited functions.
-* HUMAIN Chat has a dedicated three-column chat workspace, English/Arabic message direction, Markdown, attachment upload, persistent conversations, streamed final text, tool trace, copy, retry and model status. Native Qwen tool calls pass strict schemas and database permissions.
-* Approved templates, recipient allowlist, persistent notification jobs, SMTP receipts, failure handling and duplicate suppression. Sandbox mode restricts SMTP to loopback:1025 and `.test` recipients.
-* Audited scheduler checks run while the backend runs; job state survives restarts. Interrupted sends require review. Analytics display actual database counts and latency, with unmeasured impact values left blank.
+## Try the demo
 
-## Configuration
+1. Open **Journey workspace** and upload [the synthetic contract](demo/qiwa-synthetic.csv).
+2. Enter: `Prepare onboarding from this contract and verify the result. Report the remaining human work and simulated IT requests.`
+3. Follow the plan, then inspect the employee record, five tasks, sandbox welcome receipt and audit evidence.
+4. Repeat the verified workflow and inspect its duplicate-prevention behavior.
 
-`.env.example` documents all keys. Setup creates `.env` only if absent; it never copies original Sadiah settings or employees. Change `OLLAMA_MODEL` to an installed local Qwen tag from `ollama list`. Health verifies the exact tag. Ollama runs on Windows, not in a GPU Docker container. Context is capped at 8192 tokens, one request loop is bounded, and the model is retained for five minutes. Credentials stay server-side.
+For a company-policy scenario, create and activate an explicitly fictional policy before selecting it. The [full walkthrough](docs/HACKATHON_DEMO.md) includes exception review, resume and manual-baseline guidance. Existing document fingerprints intentionally reuse prior outcomes; use a fresh synthetic identity for a new recorded scenario.
 
-External SMTP requires `SMTP_MODE=real`, explicit `REAL_EMAIL_AUTHORIZED=true`, a configured username/password, STARTTLS-compatible server, and an exact approved recipient list. Keep the default sandbox until independently authorized. Revoke template approval or recipients to block future sends. SMTP acceptance does not prove inbox delivery.
-
-## Run components separately
-
-```powershell
-docker compose up -d --wait postgres mailpit
-cd backend
-..\.venv\Scripts\python.exe -m alembic upgrade head
-..\.venv\Scripts\python.exe -m app.seed
-..\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
-# In another PowerShell, from frontend:
-npm.cmd ci
-npm.cmd run dev
-```
-
-No SQLite, Redis or Kubernetes is used. Development services bind to loopback. Production deployment, cloud identity, secret vaults and real HR integrations require a separate deployment review.
-
-## Database operations
+## Run the checks
 
 ```powershell
-docker compose ps                                      # health
-docker compose stop postgres                           # preserve data
-docker compose up -d --wait postgres                    # start
-# From backend:
-..\.venv\Scripts\python.exe -m alembic current          # migration version
-..\.venv\Scripts\python.exe -m alembic upgrade head
-..\.venv\Scripts\python.exe -m alembic check
-# From project root:
-powershell -File scripts/backup.ps1
-.\.venv\Scripts\python.exe scripts/verify_persistence.py
-# Optional explicit synthetic-only reset (deletes synthetic profiles):
-.\.venv\Scripts\python.exe scripts/reset_synthetic.py --confirm RESET_SYNTHETIC
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test.ps1 -Browser
 ```
 
-Never run `docker compose down -v`: it removes the persistent volume. Backups go under ignored `runtime/backups`. Reset preserves non-synthetic records, documents and audit events. An existing contract document whose synthetic profile was reset can be onboarded again; use a new conversation for a fresh agent request.
+Tests use the separate `humain_test` PostgreSQL database, API port 8001 and UI port 5180. Deterministic backend tests mock model and SMTP behavior where appropriate; browser email scenarios use the sandbox. The original-source parity check skips on computers without the original Sadiah files. Recorded results describe the tested author environment.
 
-## Tests and demo
+The [latest report](docs/SYSTEM_CHECK_2026-10-31.md) links to the backend and browser results. Earlier milestones remain in the [historical test report](docs/TEST_REPORT.md).
 
-```powershell
-powershell -File scripts/test.ps1 -Browser
-# Real model + sandbox SMTP evaluation (creates synthetic demo records):
-.\.venv\Scripts\python.exe scripts/live_smoke.py
-```
+## Scope and limitations
 
-Backend tests refuse to run unless the isolated URL names `humain_test`. The test container uses tmpfs; it never shares the development volume. Browser tests start a separate API on 8001 and frontend on 5180 against the test database. Edge must be installed. Deterministic backend tests mock Ollama and SMTP; live evaluation uses the installed Qwen and actual Mailpit. See [test report](docs/TEST_REPORT.md), [live measurements](docs/LIVE_EVALUATION.json) and [demo walkthrough](docs/HACKATHON_DEMO.md).
+- Text-based PDFs require review against their source; scanned PDF OCR is unavailable. CSV/XLSX mapping is deterministic.
+- Company policy checks cover configured structured requirements. Official Qiwa approval and legal compliance certification remain outside the implementation.
+- IT provisioning is simulated. Identity verification, document collection and orientation require human completion.
+- The local prototype needs further deployment engineering, broader held-out evaluation and measured manual baselines before production use or quantified impact claims.
 
-## Stop
+This is an independent hackathon project with HUMAIN-inspired branding. It is not an official HUMAIN product. The original Sadiah application and private data remain separate; the [integration map](docs/SADIAH_INTEGRATION_MAP.md) documents the audited adapter.
 
-```powershell
-powershell -File scripts/stop.ps1
-# Also stop PostgreSQL/Mailpit, preserving volumes:
-powershell -File scripts/stop.ps1 -StopDatabase
-```
+## Documentation and submission
 
-Managed processes are matched by PID and creation time. The local Python runner first receives a private shutdown marker and drains in-flight requests for a bounded period. Windows shutdown falls back to terminating the owned process tree if needed; durable job recovery protects interrupted operations. Do not stop during a model/tool run unless interruption is intended.
+- [Presentation PDF](submission/HUMAIN_Lifecycle_Presentation.pdf) and [editable PowerPoint](submission/HUMAIN_Lifecycle_Presentation.pptx)
+- [Problem brief](submission/HUMAIN_Lifecycle_Problem.pdf) and [solution brief](submission/HUMAIN_Lifecycle_Solution.pdf)
+- [Synthetic test pack](submission/HUMAIN_Lifecycle_Test_Pack.zip)
+- [Architecture](docs/ARCHITECTURE.md), [workflows](docs/WORKFLOWS.md), [database design](docs/DATABASE_DESIGN.md) and [security](docs/SECURITY.md)
+- [Operations and configuration](docs/OPERATIONS.md) and [demo walkthrough](docs/HACKATHON_DEMO.md)
 
-## Limits that matter
-
-Text-based PDFs use Qwen; scanned PDFs need an external OCR step and are rejected clearly. Every PDF interpretation requires human review against its source. CSV/XLSX one-row contracts use deterministic field mapping rather than model inference. No private Qiwa API, legal Nitaqat certification, official contract approval, real IT provisioning or inbox-delivery guarantee is provided. SMTP cannot provide transactional exactly-once delivery: uncertain outcomes are held for review, never blindly resent. Multi-process deployment is not supported by the local startup recovery scheme. RBAC is implemented and tested; user/role provisioning currently requires administration through the database rather than a user-management UI. Human time savings and general extraction accuracy are not claimed without a measured baseline and representative labeled data.
-
-The original Sadiah source remains unchanged. See its [read-only audit](docs/ORIGINAL_SADIAH_AUDIT.md) and [integration map](docs/SADIAH_INTEGRATION_MAP.md).
-
-## Email settings in the app
-
-Open Settings → Email settings. Change Alert recipient email to route future contract, Iqama and work-permit reminders to one HR inbox, as in Sadiah. Leave it blank to use employee emails. Welcome emails still use the employee address. Save email settings commits the configuration to PostgreSQL and applies it immediately; it does not send mail or change existing job recipients.
-
-The same form configures SMTP host, STARTTLS port (usually 587), sender email, username, password, alert window and additional approved addresses. Sandbox remains the default and accepts only .test recipients on localhost:1025. Real SMTP requires an explicit authorization checkbox, username and app password; provider credentials must be entered by you. Choosing Disabled stores configuration without enabling sends. Blank password retains the existing secret; Remove stored password clears it when delivery policy permits. No original Sadiah credentials or addresses are copied.
-
-SMTP passwords are encrypted in PostgreSQL with Fernet and a key derived from the generated AUTH_SECRET. Preserve that local secret with backups; after rotating it, re-enter the SMTP password in the form. The API never returns the saved password. UI settings override initial SMTP environment defaults after the first save. Database and Ollama configuration remain in .env.
-
-
-## Journey workspace
-
-Open http://127.0.0.1:5173/journeys. Upload one authorized contract, enter the objective and optionally select an activated company policy. The app executes the authorized onboarding preparation, shows its persisted plan/evidence and routes blockers to Exceptions. Review source facts to save and resume in one action. Tasks provides a paginated internal HR board; simulated IT requests are visibly separate and cannot be marked as real provisioning.
-
-Company policies supports pasted or uploaded TXT source and checks with exact supporting quotations. Load fictional sample produces a draft only. Save a new version when policies change; an authorized administrator must activate each version before use. This is scoped company-field validation, not legal advice or comprehensive clause interpretation. Policy exceptions require a reason and remain auditable.
-
-A verified journey can record an actual manual baseline using a stopwatch or measured seconds, action count and notes. The comparison clearly labels workflow-only timing; it excludes chat planning and remaining human work. The primary demo intentionally has no fabricated manual baseline.
-
-Settings > Email settings > Test saved connection verifies the saved connection/authentication without sending. The real Qwen demo script `scripts/journey_smoke.py` requires `--real-email-to-approved-alert` before a real SMTP run. It sends one synthetic welcome to the configured approved alert address, persists its source in ignored runtime state for deduplicated reruns, and writes sanitized evidence to docs/JOURNEY_LIVE_EVALUATION.json. SMTP acceptance is not inbox confirmation.
-
-
-## Typography verification
-
-Inter Variable is self-hosted through the pinned @fontsource-variable/inter package; no external font service is needed. Its OFL license is distributed in frontend/public/fonts/Inter-OFL.txt. With the local app running, execute `node scripts/verify-typography.mjs` from frontend to inspect every route, Journey tab, login, employee dialog and mobile layout. The read-only check writes docs/TYPOGRAPHY_REPORT.json and screenshots; it does not submit business forms or send email. Gradient backgrounds receive an additional rendered-background contrast check where conservative full-gradient bounds are inconclusive.
-
-
-## Hackathon submission and recorded validation
-
-The submission folder contains the ten-slide presentation (PDF and editable PPTX), a one-page problem brief, a three-page solution brief, and synthetic test fixtures. The latest recorded check on 30 October 2026 passed 101 automated tests: 81 backend, 3 frontend unit, and 17 browser tests. See [the system check](docs/SYSTEM_CHECK_2026-10-30.md) for scope and limitations. These are recorded results, not a new test run of this publication copy.
-
-Only synthetic employee examples are supplied. Runtime databases, uploads, credentials, mailbox screenshots, and local Git history are excluded. Setup generates fresh local credentials. The locally audited original-source parity test skips when the original Sadiah files are unavailable; other adapter tests remain available.
+Only synthetic employee examples are supplied. Runtime databases, credentials, private mailbox screenshots and local upload state are excluded from this repository.
