@@ -1,0 +1,5 @@
+FICTIONAL MANUAL TEST POLICY - NOT AN APPROVED COMPANY POLICY
+Version: UAT-1030-B1. This policy is solely for synthetic app testing.
+Every contract must specify a work location.
+The probation period must be no more than 90 days.
+These are fictional company preferences, not legal requirements.

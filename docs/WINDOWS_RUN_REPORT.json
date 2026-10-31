@@ -1,0 +1,11 @@
+{
+  "setup_script_completed": true,
+  "ports_closed_after_stop": {
+    "8000": true,
+    "5173": true
+  },
+  "graceful_backend_shutdown": true,
+  "duplicate_start_rejected": true,
+  "restart_healthy": true,
+  "frontend_http_status": 200
+}

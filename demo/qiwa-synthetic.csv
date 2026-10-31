@@ -1,0 +1,2 @@
+employee_name,employee_number,nationality,occupation,employment_type,start_date,end_date,salary,basic_salary,allowances,probation_days,work_location,employer,contract_status,renewal_terms,email,synthetic
+Noura Sandbox,DEMO-NEW-001,Saudi,AI Product Specialist,Full time,2026-10-29,2027-10-28,18000,14000,4000,90,Riyadh,Synthetic Enterprise,Pending official approval,Review before renewal,welcome@humain.test,true

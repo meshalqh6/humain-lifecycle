@@ -1,0 +1,433 @@
+{
+  "kind": "live local service evaluation",
+  "scenarios": [
+    {
+      "scenario": "A",
+      "elapsed_seconds": 29.421,
+      "conversation_id": "605818ed-3a63-4f29-8151-467e3368c611",
+      "workflow_states": [
+        "COMPLETED"
+      ],
+      "tools": [
+        {
+          "tool": "extract_contract",
+          "status": "success",
+          "verified": true
+        },
+        {
+          "tool": "validate_contract",
+          "status": "success",
+          "verified": true
+        },
+        {
+          "tool": "get_employee",
+          "status": "failed",
+          "verified": false
+        },
+        {
+          "tool": "create_onboarding",
+          "status": "success",
+          "verified": true
+        }
+      ],
+      "assistant_response": "**Onboarding Status:** COMPLETED (ID: 8101aef8-47e0-4385-8245-b24abf9d152f)\n\n**Verified Actions:**\n*   **Contract & Employee Creation:** Extracted and validated contract (ID: 28e5acd8-d153-4055-9eb3-242907ae2f74). Created employee record (ID: ac596159-243e-43cd-926a-6c420b0b48c4) for Noura Sandbox.\n*   **HR Tasks:** Generated tasks successfully.\n*   **IT Provisioning:** Simulated requests created only (no real accounts provisioned).\n*   **Welcome Email:** Sent and accepted by SMTP server (Job ID: 49163fbd-519d-415f-9ea1-37c2f3eab564). Inbox delivery was not confirmed.\n\n**Remaining Human Tasks:**\n*   Review pending actions as indicated in the verification step.",
+      "stream_done": true,
+      "stream_error": false
+    },
+    {
+      "scenario": "B",
+      "elapsed_seconds": 6.814,
+      "conversation_id": "6ef5e133-c903-4618-8f16-b23031b2c3a5",
+      "workflow_states": [
+        "COMPLETED"
+      ],
+      "tools": [
+        {
+          "tool": "get_expiring_documents",
+          "status": "success",
+          "verified": true
+        },
+        {
+          "tool": "send_renewal_reminders",
+          "status": "success",
+          "verified": true
+        }
+      ],
+      "assistant_response": "A renewal reminder for Amal Demo's contract (expires 2026-11-06) was sent. The email job status is **SMTP_ACCEPTED**; inbox delivery confirmation is pending. No further automated actions were performed; human review remains required.",
+      "stream_done": true,
+      "stream_error": false
+    }
+  ],
+  "model": "qwen3.5:4b",
+  "explicit_retry": {
+    "onboarding_state": "COMPLETED",
+    "new_smtp_attempts": 0,
+    "reminder_results": {
+      "results": [
+        {
+          "job_id": "175aae7a-ec4a-4edd-896c-91ed8f9c2dba",
+          "status": "SMTP_ACCEPTED",
+          "duplicate_prevented": true,
+          "inbox_delivery_confirmed": false
+        }
+      ],
+      "count": 1
+    }
+  },
+  "onboarding": {
+    "items": [
+      {
+        "employee_id": "ac596159-243e-43cd-926a-6c420b0b48c4",
+        "document_id": "28e5acd8-d153-4055-9eb3-242907ae2f74",
+        "state": "COMPLETED",
+        "error": null,
+        "id": "8101aef8-47e0-4385-8245-b24abf9d152f",
+        "created_at": "2026-10-29T19:03:28.618791+00:00",
+        "updated_at": "2026-10-29T19:03:28.755566+00:00",
+        "employee": {
+          "employee_number": "DEMO-SMOKE-7214428060",
+          "name": "Noura Sandbox",
+          "nationality": "Saudi",
+          "profession": "AI Product Specialist",
+          "email": "welcome@humain.test",
+          "department_id": null,
+          "status": "onboarding",
+          "iqama_expiry": null,
+          "work_permit_expiry": null,
+          "synthetic": true,
+          "deleted_at": null,
+          "id": "ac596159-243e-43cd-926a-6c420b0b48c4",
+          "created_at": "2026-10-29T19:03:28.629175+00:00",
+          "updated_at": "2026-10-29T19:03:28.629175+00:00"
+        },
+        "steps": [
+          {
+            "workflow_id": "8101aef8-47e0-4385-8245-b24abf9d152f",
+            "name": "Extract contract",
+            "status": "completed",
+            "result": {
+              "simulated": false
+            },
+            "id": "c8622463-20bc-4f43-895b-42222f162808",
+            "created_at": "2026-10-29T19:03:28.623662+00:00",
+            "updated_at": "2026-10-29T19:03:28.678481+00:00"
+          },
+          {
+            "workflow_id": "8101aef8-47e0-4385-8245-b24abf9d152f",
+            "name": "Validate information",
+            "status": "completed",
+            "result": {
+              "simulated": false
+            },
+            "id": "6a79bab1-5f8f-442a-be28-10f0217c5111",
+            "created_at": "2026-10-29T19:03:28.623662+00:00",
+            "updated_at": "2026-10-29T19:03:28.676684+00:00"
+          },
+          {
+            "workflow_id": "8101aef8-47e0-4385-8245-b24abf9d152f",
+            "name": "Create employee",
+            "status": "completed",
+            "result": {
+              "simulated": false
+            },
+            "id": "df3fe10e-01cb-40cc-b33d-705cd81bc51d",
+            "created_at": "2026-10-29T19:03:28.623662+00:00",
+            "updated_at": "2026-10-29T19:03:28.679722+00:00"
+          },
+          {
+            "workflow_id": "8101aef8-47e0-4385-8245-b24abf9d152f",
+            "name": "Generate HR tasks",
+            "status": "completed",
+            "result": {
+              "simulated": false
+            },
+            "id": "df80f9d0-687e-4af4-a30e-e79b0fef9447",
+            "created_at": "2026-10-29T19:03:28.623662+00:00",
+            "updated_at": "2026-10-29T19:03:28.679722+00:00"
+          },
+          {
+            "workflow_id": "8101aef8-47e0-4385-8245-b24abf9d152f",
+            "name": "Simulate IT requests",
+            "status": "completed",
+            "result": {
+              "simulated": true
+            },
+            "id": "2e908d43-39c5-4065-b846-62ff074ca1ce",
+            "created_at": "2026-10-29T19:03:28.623662+00:00",
+            "updated_at": "2026-10-29T19:03:28.676684+00:00"
+          },
+          {
+            "workflow_id": "8101aef8-47e0-4385-8245-b24abf9d152f",
+            "name": "Send welcome email",
+            "status": "completed",
+            "result": {
+              "job_id": "49163fbd-519d-415f-9ea1-37c2f3eab564",
+              "status": "SMTP_ACCEPTED",
+              "duplicate_prevented": false,
+              "inbox_delivery_confirmed": false
+            },
+            "id": "74e2ef54-80d4-479d-af93-50b028d47c93",
+            "created_at": "2026-10-29T19:03:28.623662+00:00",
+            "updated_at": "2026-10-29T19:03:28.758638+00:00"
+          },
+          {
+            "workflow_id": "8101aef8-47e0-4385-8245-b24abf9d152f",
+            "name": "Verify outcome",
+            "status": "completed",
+            "result": {
+              "it_provisioning": "simulated only",
+              "database_verified": true,
+              "human_tasks_remaining": true
+            },
+            "id": "9affb9f3-ad8e-4ecb-991c-62f023067467",
+            "created_at": "2026-10-29T19:03:28.623662+00:00",
+            "updated_at": "2026-10-29T19:03:28.758638+00:00"
+          }
+        ]
+      },
+      {
+        "employee_id": "90d5abb9-965d-4af3-bf75-2940991ee740",
+        "document_id": "c2c342f3-8628-47ed-969d-f7d55dc55ebf",
+        "state": "COMPLETED",
+        "error": null,
+        "id": "2aee8071-37e5-472b-8612-d02bbe6bdf6c",
+        "created_at": "2026-10-29T18:57:18.498265+00:00",
+        "updated_at": "2026-10-29T18:57:18.685329+00:00",
+        "employee": {
+          "employee_number": "DEMO-NEW-001",
+          "name": "Noura Sandbox",
+          "nationality": "Saudi",
+          "profession": "AI Product Specialist",
+          "email": "welcome@humain.test",
+          "department_id": null,
+          "status": "onboarding",
+          "iqama_expiry": null,
+          "work_permit_expiry": null,
+          "synthetic": true,
+          "deleted_at": null,
+          "id": "90d5abb9-965d-4af3-bf75-2940991ee740",
+          "created_at": "2026-10-29T18:57:18.512936+00:00",
+          "updated_at": "2026-10-29T18:57:18.512936+00:00"
+        },
+        "steps": [
+          {
+            "workflow_id": "2aee8071-37e5-472b-8612-d02bbe6bdf6c",
+            "name": "Extract contract",
+            "status": "completed",
+            "result": {
+              "simulated": false
+            },
+            "id": "9a5cf29b-9566-4360-bf38-d2a8a988a300",
+            "created_at": "2026-10-29T18:57:18.506544+00:00",
+            "updated_at": "2026-10-29T18:57:18.574033+00:00"
+          },
+          {
+            "workflow_id": "2aee8071-37e5-472b-8612-d02bbe6bdf6c",
+            "name": "Validate information",
+            "status": "completed",
+            "result": {
+              "simulated": false
+            },
+            "id": "5f01b0a6-55c3-4bf1-89db-678ca1c414f9",
+            "created_at": "2026-10-29T18:57:18.506544+00:00",
+            "updated_at": "2026-10-29T18:57:18.572191+00:00"
+          },
+          {
+            "workflow_id": "2aee8071-37e5-472b-8612-d02bbe6bdf6c",
+            "name": "Create employee",
+            "status": "completed",
+            "result": {
+              "simulated": false
+            },
+            "id": "d9387848-3bf1-4b9e-9b2d-8d76a55d4fc0",
+            "created_at": "2026-10-29T18:57:18.506544+00:00",
+            "updated_at": "2026-10-29T18:57:18.575306+00:00"
+          },
+          {
+            "workflow_id": "2aee8071-37e5-472b-8612-d02bbe6bdf6c",
+            "name": "Generate HR tasks",
+            "status": "completed",
+            "result": {
+              "simulated": false
+            },
+            "id": "4c62927a-b13f-4475-a2c7-84c4fa6fec14",
+            "created_at": "2026-10-29T18:57:18.506544+00:00",
+            "updated_at": "2026-10-29T18:57:18.572191+00:00"
+          },
+          {
+            "workflow_id": "2aee8071-37e5-472b-8612-d02bbe6bdf6c",
+            "name": "Simulate IT requests",
+            "status": "completed",
+            "result": {
+              "simulated": true
+            },
+            "id": "661a2592-1553-41b3-a2ab-f77c54e6591b",
+            "created_at": "2026-10-29T18:57:18.506544+00:00",
+            "updated_at": "2026-10-29T18:57:18.572191+00:00"
+          },
+          {
+            "workflow_id": "2aee8071-37e5-472b-8612-d02bbe6bdf6c",
+            "name": "Send welcome email",
+            "status": "completed",
+            "result": {
+              "job_id": "212b025e-972b-4d65-a028-01f854b8bc98",
+              "status": "SMTP_ACCEPTED",
+              "duplicate_prevented": false,
+              "inbox_delivery_confirmed": false
+            },
+            "id": "ced3a636-ac5f-4943-ba08-ff517702926a",
+            "created_at": "2026-10-29T18:57:18.506544+00:00",
+            "updated_at": "2026-10-29T18:57:18.690102+00:00"
+          },
+          {
+            "workflow_id": "2aee8071-37e5-472b-8612-d02bbe6bdf6c",
+            "name": "Verify outcome",
+            "status": "completed",
+            "result": {
+              "it_provisioning": "simulated only",
+              "database_verified": true,
+              "human_tasks_remaining": true
+            },
+            "id": "3025fccd-24b6-4bb0-af0d-5d0baf76f915",
+            "created_at": "2026-10-29T18:57:18.506544+00:00",
+            "updated_at": "2026-10-29T18:57:18.690102+00:00"
+          }
+        ]
+      }
+    ],
+    "total": 2,
+    "offset": 0,
+    "limit": 25
+  },
+  "communications": {
+    "mode": "sandbox",
+    "approved_recipients": [
+      "renewals@humain.test",
+      "welcome@humain.test"
+    ],
+    "templates": [
+      {
+        "code": "welcome",
+        "subject": "Welcome to your new team",
+        "body": "Hello {name},\n\nYour onboarding tasks have been prepared. HR will verify identity and official Qiwa approval. IT provisioning is simulated in this demonstration.\n\nHUMAIN Lifecycle · Synthetic sandbox",
+        "approved": true,
+        "id": "59a07263-63fe-4ad5-9ff7-f04d22cd9c89",
+        "created_at": "2026-10-29T18:43:08.622802+00:00",
+        "updated_at": "2026-10-29T18:43:08.622802+00:00"
+      },
+      {
+        "code": "contract",
+        "subject": "HR renewal reminder: {kind}",
+        "body": "Hello {name},\n\nOur records show your {kind} deadline is {due_date}. Please contact HR to arrange a review. This is a reminder, not a legal determination.\n\nHUMAIN Lifecycle · Synthetic sandbox",
+        "approved": true,
+        "id": "00111dd9-9bb6-4c20-ad0d-979ac5fd8616",
+        "created_at": "2026-10-29T18:43:08.625549+00:00",
+        "updated_at": "2026-10-29T18:43:08.625549+00:00"
+      },
+      {
+        "code": "iqama",
+        "subject": "HR renewal reminder: {kind}",
+        "body": "Hello {name},\n\nOur records show your {kind} deadline is {due_date}. Please contact HR to arrange a review. This is a reminder, not a legal determination.\n\nHUMAIN Lifecycle · Synthetic sandbox",
+        "approved": true,
+        "id": "25891d05-2fbc-4f29-8bfb-74562e6656e5",
+        "created_at": "2026-10-29T18:43:08.627768+00:00",
+        "updated_at": "2026-10-29T18:43:08.627768+00:00"
+      },
+      {
+        "code": "work_permit",
+        "subject": "HR renewal reminder: {kind}",
+        "body": "Hello {name},\n\nOur records show your {kind} deadline is {due_date}. Please contact HR to arrange a review. This is a reminder, not a legal determination.\n\nHUMAIN Lifecycle · Synthetic sandbox",
+        "approved": true,
+        "id": "5dce2aaa-6530-4781-9760-99883cf0c019",
+        "created_at": "2026-10-29T18:43:08.630873+00:00",
+        "updated_at": "2026-10-29T18:43:08.630873+00:00"
+      }
+    ],
+    "jobs": [
+      {
+        "employee_id": "ac596159-243e-43cd-926a-6c420b0b48c4",
+        "template_id": "59a07263-63fe-4ad5-9ff7-f04d22cd9c89",
+        "recipient": "welcome@humain.test",
+        "subject": "Welcome to your new team",
+        "body": "Hello Noura Sandbox,\n\nYour onboarding tasks have been prepared. HR will verify identity and official Qiwa approval. IT provisioning is simulated in this demonstration.\n\nHUMAIN Lifecycle · Synthetic sandbox",
+        "state": "SMTP_ACCEPTED",
+        "scheduled_at": "2026-10-29T19:03:28.690810+00:00",
+        "attempts": 1,
+        "id": "49163fbd-519d-415f-9ea1-37c2f3eab564",
+        "created_at": "2026-10-29T19:03:28.690810+00:00",
+        "updated_at": "2026-10-29T19:03:28.747583+00:00"
+      },
+      {
+        "employee_id": "0cf21cf5-4a9d-4da9-bc35-f9cbf7a09fef",
+        "template_id": "00111dd9-9bb6-4c20-ad0d-979ac5fd8616",
+        "recipient": "renewals@humain.test",
+        "subject": "HR renewal reminder: contract",
+        "body": "Hello Amal Demo,\n\nOur records show your contract deadline is 2026-11-06. Please contact HR to arrange a review. This is a reminder, not a legal determination.\n\nHUMAIN Lifecycle · Synthetic sandbox",
+        "state": "SMTP_ACCEPTED",
+        "scheduled_at": "2026-10-29T19:01:04.853654+00:00",
+        "attempts": 1,
+        "id": "175aae7a-ec4a-4edd-896c-91ed8f9c2dba",
+        "created_at": "2026-10-29T19:01:04.853654+00:00",
+        "updated_at": "2026-10-29T19:01:04.925650+00:00"
+      },
+      {
+        "employee_id": "90d5abb9-965d-4af3-bf75-2940991ee740",
+        "template_id": "59a07263-63fe-4ad5-9ff7-f04d22cd9c89",
+        "recipient": "welcome@humain.test",
+        "subject": "Welcome to your new team",
+        "body": "Hello Noura Sandbox,\n\nYour onboarding tasks have been prepared. HR will verify identity and official Qiwa approval. IT provisioning is simulated in this demonstration.\n\nHUMAIN Lifecycle · Synthetic sandbox",
+        "state": "SMTP_ACCEPTED",
+        "scheduled_at": "2026-10-29T18:57:18.586337+00:00",
+        "attempts": 1,
+        "id": "212b025e-972b-4d65-a028-01f854b8bc98",
+        "created_at": "2026-10-29T18:57:18.586337+00:00",
+        "updated_at": "2026-10-29T18:57:18.677514+00:00"
+      }
+    ],
+    "logs": [
+      {
+        "job_id": "49163fbd-519d-415f-9ea1-37c2f3eab564",
+        "status": "SMTP_ACCEPTED",
+        "message_id": "<49163fbd-519d-415f-9ea1-37c2f3eab564@humain.local>",
+        "detail": "SMTP server accepted the message; inbox delivery is unverified",
+        "id": "5c5aeaed-d9f9-4cd5-9fd5-c691b873d7fd",
+        "created_at": "2026-10-29T19:03:28.746633+00:00",
+        "updated_at": "2026-10-29T19:03:28.746633+00:00"
+      },
+      {
+        "job_id": "175aae7a-ec4a-4edd-896c-91ed8f9c2dba",
+        "status": "SMTP_ACCEPTED",
+        "message_id": "<175aae7a-ec4a-4edd-896c-91ed8f9c2dba@humain.local>",
+        "detail": "SMTP server accepted the message; inbox delivery is unverified",
+        "id": "609dab5b-54fb-464f-acbd-3803743c6994",
+        "created_at": "2026-10-29T19:01:04.923276+00:00",
+        "updated_at": "2026-10-29T19:01:04.923276+00:00"
+      },
+      {
+        "job_id": "212b025e-972b-4d65-a028-01f854b8bc98",
+        "status": "SMTP_ACCEPTED",
+        "message_id": "<212b025e-972b-4d65-a028-01f854b8bc98@humain.local>",
+        "detail": "SMTP server accepted the message; inbox delivery is unverified",
+        "id": "eca72dcb-c074-4b55-8c8d-d983e303cb6a",
+        "created_at": "2026-10-29T18:57:18.674708+00:00",
+        "updated_at": "2026-10-29T18:57:18.674708+00:00"
+      }
+    ]
+  },
+  "evaluation": {
+    "agent_runs": 6,
+    "agent_completed": 6,
+    "mean_latency_ms": 28347,
+    "tool_executions": 17,
+    "tools_succeeded": 16,
+    "onboarding_runs": 2,
+    "onboarding_completed": 2,
+    "human_interventions": 0,
+    "smtp_accepted_jobs": 3,
+    "manual_baseline_seconds": null,
+    "time_saved_seconds": null,
+    "extraction_accuracy": null,
+    "note": "Only measured database counts and recorded latency. Complete the manual baseline and labeled extraction benchmark before claiming time savings or accuracy."
+  },
+  "mailpit_message_count": 4
+}

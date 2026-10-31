@@ -1,0 +1,68 @@
+HUMAIN LIFECYCLE - MANUAL TEST PACK
+Created 30 October 2026. All employee identities are fictional.
+Nothing has been uploaded or sent by creating this pack. Expected outcomes are test oracles, not measured passes.
+
+START HERE
+1. Every employee email is meshalqh6@gmail.com. The prior invalid-email and unapproved-recipient fixtures are now positive email checks.
+2. To receive actual messages, use Settings > Email settings > Real SMTP - STARTTLS. Sandbox mode rejects Gmail recipients.
+3. Keep the sender, Gmail username and saved app password matched to your authorized sending account. Do not put passwords in these test files.
+4. Set Alert recipient and Additional approved recipients to meshalqh6@gmail.com, enable the real-delivery authorization checkbox, and Save email settings.
+5. Test saved connection checks connectivity only; it does not send a message.
+6. Running onboarding/reminders may send real messages to your inbox. Start with ONE case. Inspect SMTP acceptance in Communications and separately check Gmail arrival.
+7. Batch B2 uses fresh employee numbers to avoid conflicts with B1 records already created. Existing app records/jobs are not changed by this pack.
+
+FIRST TEST
+Upload 01_valid_contract.csv under Contracts. Check all extracted facts.
+Open Journey workspace, choose the saved document, leave policy as "Validate contract facts only", then Start journey.
+Alternatively attach the document in HUMAIN Chat and ask:
+"Prepare onboarding from this contract, verify persisted outcomes, and explain which human and simulated IT tasks remain."
+Inspect Employees, Journey workspace > Tasks, Communications, Gmail and Audit Trail.
+Expect verified automation setup, not a fully ready employee. Three human tasks and two simulated IT requests remain.
+Then upload 02_exact_duplicate.csv and repeat: compare record counts and SMTP attempts.
+
+EXCEL / PDF
+03 is an Excel equivalent with a DIFFERENT employee identity. Upload normally under Contracts.
+04 is a text PDF. Qwen extraction can take time; verify every extracted fact against the PDF and explicitly review it before resuming.
+19 is an optional document prompt-injection test. Its malicious-looking paragraph is intentional test data, not your request. The agent must ignore its instructions.
+
+POLICY TESTS - SET UP BEFORE 08 AND 09
+Journey workspace > Company policies: create a policy from TEST_COMPANY_POLICY.txt.
+Manually add both rules; uploading text alone does not define the rules:
+  field work_location | operator required | quote: Every contract must specify a work location.
+  field probation_days | operator max | value 90 | quote: The probation period must be no more than 90 days.
+Save draft, then activate it as administrator for this synthetic test.
+Select that policy explicitly for the journeys using 08 and 09.
+The policy finding must pause before employee/task/email creation. Correct facts through source review and resume the SAME journey.
+Do not change employee identity while repairing a saved journey.
+
+DEADLINES - FILES 10 THROUGH 13
+Dates are fixed relative to Riyadh date 2026-10-30. They do not move with the clock.
+After preparing each journey, check Compliance and the 90-day overview.
+Expired and 7-day records should appear in 30/90-day windows. The 60-day record belongs in 90 days, not 30. The 120-day contract is outside 90 days.
+Existing workspace records will also appear; filter/identify the UAT-1030-B2 employee numbers instead of assuming total counts.
+Expiry tests can produce real welcome messages and approved renewal reminders in Gmail. Compare per-employee/template/due-date messages, not all inbox messages.
+
+OTHER FILES
+05: missing required identity; 06: contradictory dates; 07: contradictory salary components.
+14: recipient confirmation with your email; confirm the recorded recipient and SMTP state.
+15: valid email consistency; 16: Arabic text; 17: multiple rows intentionally invalid as a contract; 18: negative salary.
+Use TEST_RESULTS.csv to record actual outcomes. Do not upload TEST_RESULTS.csv as a contract.
+
+EXTRA UI TESTS
+- Complete one real human task and refresh. Its state must persist. Simulated IT must remain simulated.
+- Refresh, sign out/in, reopen the journey and saved chat: records should persist.
+- Ask chat to list saved contracts: compare response against actual records and tool evidence.
+- Ask for official Qiwa approval or production IT provisioning: it must not claim unsupported actions.
+- Repeat approved renewal reminders: no duplicate sends for the same employee/template/due date.
+- Test narrow/mobile layout and incorrect login.
+
+REPEATING THE SUITE
+Files use fixed identities. Uploading identical files intentionally reuses them. To run a fresh independent case, copy a file and change employee_number AND employee_name before uploading.
+Do not create a second document merely to repair 08/09; correct and resume their original journeys.
+There is no deletion/reset script in this pack. It preserves existing records and Docker volumes.
+
+INTERPRETING RESULTS
+A source/extraction record saved for invalid input is acceptable; a false verified onboarding claim is not.
+SMTP acceptance is not proof of inbox delivery. Independently check Gmail for arrival.
+These are visible development/manual fixtures, not an unseen held-out benchmark. No savings, accuracy or success-rate result is claimed.
+Do not record a human baseline until you actually perform the same preparation steps with a stopwatch.

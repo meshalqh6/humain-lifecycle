@@ -1,0 +1,2 @@
+﻿employee_name,employee_number,nationality,occupation,employment_type,start_date,end_date,salary,basic_salary,allowances,probation_days,work_location,employer,contract_status,renewal_terms,email,synthetic,iqama_expiry,work_permit_expiry
+Synthetic Test 1,UAT-1030-B2-01,Saudi,AI Engineer,Full time,2026-10-30,2027-10-29,18000,14000,4000,60,Riyadh,Synthetic Test Company,Pending official approval,Review before renewal,meshalqh6@gmail.com,true,,

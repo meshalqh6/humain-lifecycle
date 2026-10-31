@@ -1,0 +1,309 @@
+/* Crisp shared typography. Preserve layout and the HUMAIN surface/brand palette. */
+:root {
+  --text-primary: #132d38;
+  --text-secondary: #354f5c;
+  --text-muted: #425b68;
+  --text-accent: #006b78;
+  --text-success: #08634f;
+  --text-warning: #794b13;
+  --text-danger: #903c2b;
+  --muted: var(--text-muted);
+}
+body {
+  color: var(--text-primary);
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-kerning: normal;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: optimizeLegibility;
+}
+body,
+button,
+input,
+select,
+textarea,
+.recharts-wrapper {
+  font-family: var(--font-sans);
+}
+:where(
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  span,
+  small,
+  a,
+  button,
+  label,
+  input,
+  select,
+  textarea,
+  td,
+  th,
+  dt,
+  dd,
+  summary
+) {
+  text-shadow: none;
+}
+.sidebar,
+.login-art,
+.wasl-banner {
+  --text-primary: #f0f7f8;
+  --text-secondary: #d3e2e6;
+  --text-muted: #b1c6ce;
+  --text-accent: #6ce0d2;
+  --text-success: #6ce0bd;
+}
+.sidebar {
+  -webkit-font-smoothing: auto;
+}
+h1,
+.page-head h1,
+.chat-welcome h2,
+.login-art h1 {
+  font-weight: 600;
+}
+h2,
+h3,
+h4,
+.section-title h2,
+.modal > h2,
+.workflow-top h3,
+.integration-card h3,
+.template-card h3 {
+  font-weight: 600;
+}
+strong,
+b,
+.person strong,
+td strong {
+  font-weight: 600;
+}
+.metric > strong,
+.journey-stats strong {
+  font-weight: 600;
+}
+label,
+button,
+.button,
+.text-button,
+summary,
+th {
+  font-weight: 500;
+}
+.sidebar nav a,
+.sidebar .wasl-nav {
+  font-weight: 500;
+}
+.sidebar nav a.active,
+.sidebar .wasl-nav.active {
+  font-weight: 600;
+}
+.page-head p,
+.section-title p,
+.metric-top,
+.metric-bottom,
+.subtle,
+.person small,
+.activity-row small,
+.empty-description,
+.details dt,
+.template-card p,
+.integration-card p,
+.integration-card small,
+.workflow-note,
+.policy-grid p,
+.chat-welcome > p,
+.prompt-grid p,
+.composer-note,
+.message-meta time,
+.message-meta > span,
+.journey-form small,
+.journey-list small,
+.journey-stats small,
+.journey-plan small,
+.journey-evidence dt,
+.journey-evidence p,
+.journey-measurement p,
+.exception-list p,
+.task-reference,
+.chat-history-list h3,
+.chat-history-empty,
+.chat-activity > summary > span {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+td,
+.message-body,
+.journey-evidence dd,
+.details dd,
+.policy-source {
+  color: var(--text-secondary);
+}
+label input,
+label select,
+input,
+select,
+textarea,
+.composer textarea {
+  color: var(--text-primary);
+  font-weight: 450;
+}
+input::placeholder,
+textarea::placeholder,
+.composer textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+  font-weight: 400;
+}
+.metric-bottom,
+.person small,
+.activity-row small,
+.workspace-footer,
+.composer-note,
+.composer-bottom > div > span,
+.message-meta time,
+.message-meta > span,
+.trace small,
+.trace > code,
+.task-reference,
+.journey-stats small,
+.journey-plan small,
+.journey-evidence small,
+.chat-activity > summary > span,
+.prompt-number,
+.art-index {
+  font-size: 10px;
+}
+.table-scroll th,
+.nav-label,
+.sidebar .nav-label,
+.eyebrow,
+.chat-welcome .eyebrow,
+.sandbox-tag,
+.chart-legend {
+  font-weight: 600;
+}
+.table-scroll th,
+.sidebar .nav-label,
+.eyebrow,
+.chat-welcome .eyebrow {
+  font-size: 10px;
+}
+.badge {
+  font-weight: 600;
+}
+.badge:not(.lime) {
+  color: var(--text-secondary);
+}
+.badge.green {
+  color: var(--text-success);
+}
+.badge.amber {
+  color: var(--text-warning);
+}
+.badge.red {
+  color: var(--text-danger);
+}
+.review-issue,
+.chat-error {
+  color: var(--text-warning);
+}
+.error,
+.error-text {
+  color: var(--text-danger);
+}
+.avatar {
+  font-weight: 600;
+  color: #00616e;
+}
+.avatar.tone-1 {
+  color: #08634f;
+}
+.avatar.tone-2 {
+  color: #496018;
+}
+.avatar.tone-3 {
+  color: #425a7a;
+}
+.tabs button,
+.journey-tabs button,
+.chart-legend,
+.chat-history-list button {
+  font-weight: 500;
+}
+.chat-history-heading h2,
+.prompt-grid h3,
+.trace strong {
+  font-weight: 600;
+}
+.recharts-text,
+.recharts-cartesian-axis-tick-value {
+  font-family: var(--font-sans);
+  fill: var(--text-secondary);
+  font-weight: 500;
+}
+.recharts-default-tooltip {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+}
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled,
+[aria-disabled="true"],
+.upload-zone.busy {
+  opacity: 1;
+}
+button:disabled {
+  color: var(--text-muted);
+  box-shadow: none;
+}
+.modal-overlay {
+  backdrop-filter: none;
+}
+.metric-top svg,
+.chart-panel .recharts-bar-rectangle {
+  filter: none;
+}
+/* Keep the existing teal-to-green heading, with legible stops on white. */
+.chat-welcome h2 em {
+  background-image: linear-gradient(100deg, #006b78, #00765f 65%, #4d7412);
+}
+@media (max-width: 760px) {
+  .prompt-grid h3 {
+    font-size: 11px;
+  }
+  .prompt-grid p,
+  .chat-welcome > p,
+  .composer-note {
+    font-size: 10px;
+  }
+}
+
+.breadcrumbs .slash {
+  color: var(--text-muted);
+}
+.banner-copy > p {
+  color: #f0f7f8;
+  font-weight: 450;
+}
+.banner-copy .badge {
+  font-size: 9px;
+  font-weight: 600;
+}
+.login-art em {
+  background-image: linear-gradient(100deg, #45bac6, #00c7a5, #caff3d);
+}
+
+[data-sonner-toaster],
+[data-sonner-toast] {
+  font-family: var(--font-sans);
+}
+input[type="file"]::file-selector-button {
+  font: inherit;
+  font-weight: 500;
+}

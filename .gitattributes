@@ -1,0 +1,13 @@
+* text=auto eol=lf
+
+# Preserve exact bytes for documents, evidence images, fixtures and fonts.
+*.pdf binary
+*.pptx binary
+*.xlsx binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ttf binary
+*.woff binary
+*.woff2 binary

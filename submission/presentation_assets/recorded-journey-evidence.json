@@ -1,0 +1,14 @@
+{
+  "journey_id": "4159d478-be6a-457b-bc5a-b80b2fb34ddb",
+  "source_sha256": "0032ea3f51f651c96ca53237907781cb637491c0359afba63c620a2c0ce96e78",
+  "evidence": {
+    "employee_id": "630421cd-afe3-449e-bed0-25f1135feb8b",
+    "contract_id": "fadcab75-1404-4a03-b501-e4967b9c60db",
+    "tasks_created": 5,
+    "human_tasks_pending": 3,
+    "it_requests_simulated": 2,
+    "smtp_accepted": true,
+    "inbox_delivery_confirmed": false
+  },
+  "automation_setup_verified": true
+}

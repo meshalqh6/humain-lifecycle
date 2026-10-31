@@ -1,0 +1,52 @@
+[
+  {
+    "number": 1,
+    "title": "",
+    "dark": true
+  },
+  {
+    "number": 2,
+    "title": "The enterprise onboarding problem",
+    "dark": false
+  },
+  {
+    "number": 3,
+    "title": "Our solution: verified onboarding preparation",
+    "dark": false
+  },
+  {
+    "number": 4,
+    "title": "HUMAIN Chat & specialized capabilities",
+    "dark": true
+  },
+  {
+    "number": 5,
+    "title": "Technical architecture",
+    "dark": false
+  },
+  {
+    "number": 6,
+    "title": "Real product implementation",
+    "dark": false
+  },
+  {
+    "number": 7,
+    "title": "End-to-end autonomous workflow",
+    "dark": false
+  },
+  {
+    "number": 8,
+    "title": "Testing & recorded results",
+    "dark": false
+  },
+  {
+    "number": 9,
+    "title": "Innovation, business value & limitations",
+    "dark": true
+  },
+  {
+    "number": 10,
+    "title": "Conclusion & demo",
+    "dark": true
+  }
+]

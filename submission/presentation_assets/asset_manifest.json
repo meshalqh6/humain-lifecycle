@@ -1,0 +1,134 @@
+{
+  "capture_date": "2026-10-31",
+  "timezone": "Asia/Riyadh",
+  "application": "http://127.0.0.1:5173",
+  "records": "Synthetic demonstration workspace",
+  "files": [
+    {
+      "path": "BackGround1.jpg",
+      "bytes": 600659,
+      "sha256": "220d6c9891ebcadef029443526fa666ec478d4aa63bfe479c03b9540ea2bf051"
+    },
+    {
+      "path": "BackGround1-logo.png",
+      "bytes": 1862835,
+      "sha256": "9d34309c16bfeb279ab53dc87e390b3f9d751046222c0fc294a5c3f234b5e801"
+    },
+    {
+      "path": "brand-art-crop.png",
+      "bytes": 144957,
+      "sha256": "aad8ea6657a4ffd7ffa99489b3cc9099aaccff77aec399ea01fa6e88087d49f8"
+    },
+    {
+      "path": "chat-crop.png",
+      "bytes": 169432,
+      "sha256": "f571ae6611185efa60955148a87a1eb839a787fe99204619ce240130e518e648"
+    },
+    {
+      "path": "chat.png",
+      "bytes": 63640,
+      "sha256": "477eaa2bb0cd444477ac55379f626b01d4b00b5db00a701e487e14d2aee6e9e2"
+    },
+    {
+      "path": "contracts-crop.png",
+      "bytes": 207081,
+      "sha256": "39b238819920b892aaee29d194fa2708d915db80d294618bb574d0b5412cacfa"
+    },
+    {
+      "path": "contracts.png",
+      "bytes": 69837,
+      "sha256": "4ffc7dd8f6a379c6b6615a171761c6f8af2bed1c7c3f4da87606e7c4ffe3dcc6"
+    },
+    {
+      "path": "dashboard.png",
+      "bytes": 82811,
+      "sha256": "e8e2160b1eb0694c8960c91bff25d409658993dcf966933c50b97c6949d9db8c"
+    },
+    {
+      "path": "employees-crop.png",
+      "bytes": 196677,
+      "sha256": "0de8a5fb1b430d8b146b2f03d93d1b7c938e59ee22094a8dcc5799ac50aa6f69"
+    },
+    {
+      "path": "employees.png",
+      "bytes": 72083,
+      "sha256": "8e1bcb28b97df0116556822187b38cdb965307add0d95e7637b58a8a2a293707"
+    },
+    {
+      "path": "fonts/Bold.ttf",
+      "bytes": 66620,
+      "sha256": "c782a28210e1d91a97d67329ff77898d71f6cafa3e8e925286ea19ea44527278"
+    },
+    {
+      "path": "fonts/Inter-Bold.ttf",
+      "bytes": 66596,
+      "sha256": "745589eee8fafb64917a1b3f7309c692f3a92ca881e1a38a2fdfeb8be8706e41"
+    },
+    {
+      "path": "fonts/Inter-Medium.ttf",
+      "bytes": 66456,
+      "sha256": "558c5f584fb3ce40b9abfe31dbf2b48d3c5e1b0c160fb959ed0de98985f5e08b"
+    },
+    {
+      "path": "fonts/Inter-OFL.txt",
+      "bytes": 4477,
+      "sha256": "3b0a5fca3d17942cde889069889dedbbbd075e9b599968c82a95f4d944e9b345"
+    },
+    {
+      "path": "fonts/Inter-Regular.ttf",
+      "bytes": 66392,
+      "sha256": "cef7559831c1f1bb2ce09fd0f5923f6b4cbba5e5624279caa5aa42c3201f4c14"
+    },
+    {
+      "path": "fonts/Inter.ttf",
+      "bytes": 66396,
+      "sha256": "4ca31b9fc6baed558731608a1a0d2e4b13a76357865eebf38e621d8d2791844f"
+    },
+    {
+      "path": "fonts/Medium.ttf",
+      "bytes": 66480,
+      "sha256": "e43d6da37b48d81506a2118f26a82e760a373befb8ef8ad4b0170a02fd5fa61b"
+    },
+    {
+      "path": "humain-chat-logo.png",
+      "bytes": 8890,
+      "sha256": "baf8268f171c612a4433b8de94c8b5844013d3c42953554f6a3216e7f1e33557"
+    },
+    {
+      "path": "humain-logo.png",
+      "bytes": 7582,
+      "sha256": "15fab7cfb84211571112a81bba28189b9fcff7a5a15ecf9b30e72c2441d5805a"
+    },
+    {
+      "path": "humain-trimmed.png",
+      "bytes": 3757,
+      "sha256": "c851c7d093d9b2e3acb47324daf79266f118e8c7e663b8d096602b724a57d9e8"
+    },
+    {
+      "path": "humain-white.png",
+      "bytes": 3844,
+      "sha256": "c7f4673d2b363fd7ab36e862ae50e6d22fc788bbae3f57387cdbf6b4794cbb50"
+    },
+    {
+      "path": "journey-evidence.png",
+      "bytes": 65403,
+      "sha256": "d6293a4231f1887e63391219937102a07e01ec7e6f6abc23d9f0054f436e1163"
+    },
+    {
+      "path": "policies-crop.png",
+      "bytes": 209103,
+      "sha256": "81df59d76b3de633608e173e741d16b1de4bcabfc1508d25f30db863a9ea9bfd"
+    },
+    {
+      "path": "policies.png",
+      "bytes": 74327,
+      "sha256": "fc93c2ca8a40d6f59f848c9f2b00a5337860663c36127387feaee98c2aaf5130"
+    },
+    {
+      "path": "recorded-journey-evidence.json",
+      "bytes": 485,
+      "sha256": "342c07ec12f100ba927ecb51deeab8abc7e87c4fd6192009422afc095acb9883"
+    }
+  ],
+  "cover_artwork": "BackGround1-logo.png, generated edit of the user-supplied BackGround1.jpg to match the supplied HUMAIN wordmark reference; original retained"
+}

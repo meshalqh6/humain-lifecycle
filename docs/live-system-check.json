@@ -1,0 +1,37 @@
+{
+  "checked_at_utc": "2026-10-30T16:39:05.096844+00:00",
+  "api_endpoints_passed": 23,
+  "database": {
+    "connected": true,
+    "version": "17.11 (Debian 17.11-1.pgdg12+2)",
+    "migration": "91b4fa7d26c8"
+  },
+  "ollama": {
+    "connected": true,
+    "ready": true,
+    "model": "qwen3.5:4b",
+    "installed_models": [
+      "gpt-oss:20b",
+      "qwen3.5:4b"
+    ]
+  },
+  "running_agent_workflows": [],
+  "live_demo": {
+    "name": "Live Email Demo 75ab74",
+    "employee_number": "LIVE-20261030-75ab74",
+    "contracts": 1,
+    "tasks": 5,
+    "human_tasks_pending": 3,
+    "simulated_it_requests": 2,
+    "automation_state": "COMPLETED",
+    "verified_steps": 7,
+    "step_display_order_correct": true,
+    "email_job_id": "fdf16196-1065-41a5-a570-5cbb13777454",
+    "email_state": "SMTP_ACCEPTED",
+    "email_attempts": 1,
+    "gmail_inbox_verified_separately": true,
+    "gmail_message_id": "1a18d83f1fd2663c",
+    "gmail_evidence": "submission/live-email-demo/gmail-received.jpg"
+  },
+  "additional_email_sends_in_this_check": 0
+}

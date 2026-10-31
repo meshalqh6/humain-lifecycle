@@ -1,0 +1,26 @@
+{
+  "kind": "Real Qwen contract-to-onboarding journey",
+  "manual_baseline_seconds": null,
+  "time_saved_seconds": null,
+  "inbox_delivery_confirmed": false,
+  "agent_elapsed_seconds": 37.036,
+  "conversation_id": "9c2f4fb2-95b9-4130-935a-55bf81ff3a7b",
+  "tools": [
+    {
+      "tool": "start_onboarding_journey",
+      "status": "success"
+    }
+  ],
+  "journey_id": "4159d478-be6a-457b-bc5a-b80b2fb34ddb",
+  "state": "VERIFIED",
+  "automation_setup_verified": true,
+  "employee_ready": false,
+  "active_automation_ms": 2074,
+  "human_interventions": 0,
+  "tasks_created": 5,
+  "human_tasks_pending": 3,
+  "simulated_it_requests": 2,
+  "smtp_accepted": true,
+  "smtp_mode": "real",
+  "retry_new_smtp_attempts": 0
+}

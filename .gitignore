@@ -1,0 +1,21 @@
+.env
+.venv/
+node_modules/
+dist/
+__pycache__/
+.pytest_cache/
+*.pyc
+runtime/
+uploads/
+test-results/
+playwright-report/
+*.log
+*.dump
+*.tsbuildinfo
+
+# Local authoring and cache files
+tmp/
+.ruff_cache/
+.env.*
+!.env.example
+*.inspect.ndjson

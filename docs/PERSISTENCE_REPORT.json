@@ -1,0 +1,13 @@
+{
+  "identical": true,
+  "record_counts": {
+    "employees": 14,
+    "contracts": 14,
+    "onboarding_workflows": 2,
+    "notification_jobs": 3,
+    "agent_conversations": 6
+  },
+  "before_sha256": "4da843be0468a1ea2a648c98a8458ea0efacc08d9098289924300697ef881c54",
+  "after_sha256": "4da843be0468a1ea2a648c98a8458ea0efacc08d9098289924300697ef881c54",
+  "volume_deleted": false
+}
