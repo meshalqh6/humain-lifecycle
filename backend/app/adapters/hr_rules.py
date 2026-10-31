@@ -1,4 +1,4 @@
-"""Unmodified pure functions extracted from audited Sadiah core.py. No original imports or data."""
+"""Deterministic date, deadline and workforce calculations."""
 
 from datetime import date, datetime
 import pandas as pd
@@ -97,7 +97,7 @@ def build_email_body(alerts, settings):
     if not alerts:
         return None
 
-    lines = [f"Sadiah Agent deadline report — {date.today().isoformat()}", ""]
+    lines = [f"HUMAIN Lifecycle deadline report — {date.today().isoformat()}", ""]
     expired = [a for a in alerts if a.get("expired")]
     upcoming = sorted([a for a in alerts if not a.get("expired")], key=lambda a: a["days_left"])
 

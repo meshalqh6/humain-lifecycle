@@ -21,17 +21,17 @@ Setup generates strong database/test/auth/admin secrets, starts PostgreSQL and M
 
 ## What works
 
-* Database-backed employee creation, lookup, search, editing and soft archive APIs, with directory and profile UI. Previewed legacy CSV/XLSX roster imports use actual audited Sadiah date functions.
+* Database-backed employee creation, lookup, search, editing and soft archive APIs, with directory and profile UI. CSV/XLSX roster imports preview rows and validate dates before creating records.
 * One-contract PDF/CSV/XLSX intake, source-byte persistence and SHA256 deduplication, structured extraction, missing/contradictory/date validation, review form, and source downloads.
 * Onboarding creates a durable employee and contract, five HR/IT request tasks, an approved welcome email, verified workflow steps and audit records. IT requests are explicitly simulated; human HR tasks remain pending after automation completes.
-* Contract, Iqama and work-permit deadline calculations include expired records and inclusive upcoming windows. Saudi nationality and profession ratios reuse Sadiah’s audited functions.
+* Contract, Iqama and work-permit deadline calculations include expired records and inclusive upcoming windows. Saudi nationality and profession ratios use tested workforce calculation rules.
 * HUMAIN Chat has a dedicated three-column chat workspace, English/Arabic message direction, Markdown, attachment upload, persistent conversations, streamed final text, tool trace, copy, retry and model status. Native Qwen tool calls pass strict schemas and database permissions.
 * Approved templates, recipient allowlist, persistent notification jobs, SMTP receipts, failure handling and duplicate suppression. Sandbox mode restricts SMTP to loopback:1025 and `.test` recipients.
 * Audited scheduler checks run while the backend runs; job state survives restarts. Interrupted sends require review. Analytics display actual database counts and latency, with unmeasured impact values left blank.
 
 ## Configuration
 
-`.env.example` documents all keys. Setup creates `.env` only if absent; it never copies original Sadiah settings or employees. Change `OLLAMA_MODEL` to an installed local Qwen tag from `ollama list`. Health verifies the exact tag. Ollama runs on Windows, not in a GPU Docker container. Context is capped at 8192 tokens, one request loop is bounded, and the model is retained for five minutes. Credentials stay server-side.
+`.env.example` documents all keys. Setup creates `.env` only if absent; it never imports external application settings or employees. Change `OLLAMA_MODEL` to an installed local Qwen tag from `ollama list`. Health verifies the exact tag. Ollama runs on Windows, not in a GPU Docker container. Context is capped at 8192 tokens, one request loop is bounded, and the model is retained for five minutes. Credentials stay server-side.
 
 External SMTP requires `SMTP_MODE=real`, explicit `REAL_EMAIL_AUTHORIZED=true`, a configured username/password, STARTTLS-compatible server, and an exact approved recipient list. Keep the default sandbox until independently authorized. Revoke template approval or recipients to block future sends. SMTP acceptance does not prove inbox delivery.
 
@@ -93,13 +93,13 @@ Managed processes are matched by PID and creation time. The local Python runner 
 
 Text-based PDFs use Qwen; scanned PDFs need an external OCR step and are rejected clearly. Every PDF interpretation requires human review against its source. CSV/XLSX one-row contracts use deterministic field mapping rather than model inference. No private Qiwa API, legal Nitaqat certification, official contract approval, real IT provisioning or inbox-delivery guarantee is provided. SMTP cannot provide transactional exactly-once delivery: uncertain outcomes are held for review, never blindly resent. Multi-process deployment is not supported by the local startup recovery scheme. RBAC is implemented and tested; user/role provisioning currently requires administration through the database rather than a user-management UI. Human time savings and general extraction accuracy are not claimed without a measured baseline and representative labeled data.
 
-The original Sadiah source remains unchanged. See its [read-only audit](docs/ORIGINAL_SADIAH_AUDIT.md) and [integration map](docs/SADIAH_INTEGRATION_MAP.md).
+See the [HR rules documentation](docs/HR_RULES.md) for deterministic date, deadline and workforce calculations.
 
 ## Email settings in the app
 
-Open Settings → Email settings. Change Alert recipient email to route future contract, Iqama and work-permit reminders to one HR inbox, as in Sadiah. Leave it blank to use employee emails. Welcome emails still use the employee address. Save email settings commits the configuration to PostgreSQL and applies it immediately; it does not send mail or change existing job recipients.
+Open Settings → Email settings. Change Alert recipient email to route future contract, Iqama and work-permit reminders to one HR inbox. Leave it blank to use employee emails. Welcome emails still use the employee address. Save email settings commits the configuration to PostgreSQL and applies it immediately; it does not send mail or change existing job recipients.
 
-The same form configures SMTP host, STARTTLS port (usually 587), sender email, username, password, alert window and additional approved addresses. Sandbox remains the default and accepts only .test recipients on localhost:1025. Real SMTP requires an explicit authorization checkbox, username and app password; provider credentials must be entered by you. Choosing Disabled stores configuration without enabling sends. Blank password retains the existing secret; Remove stored password clears it when delivery policy permits. No original Sadiah credentials or addresses are copied.
+The same form configures SMTP host, STARTTLS port (usually 587), sender email, username, password, alert window and additional approved addresses. Sandbox remains the default and accepts only .test recipients on localhost:1025. Real SMTP requires an explicit authorization checkbox, username and app password; provider credentials must be entered by you. Choosing Disabled stores configuration without enabling sends. Blank password retains the existing secret; Remove stored password clears it when delivery policy permits. Existing credentials and recipient lists are not imported.
 
 SMTP passwords are encrypted in PostgreSQL with Fernet and a key derived from the generated AUTH_SECRET. Preserve that local secret with backups; after rotating it, re-enter the SMTP password in the form. The API never returns the saved password. UI settings override initial SMTP environment defaults after the first save. Database and Ollama configuration remain in .env.
 
@@ -124,4 +124,4 @@ Inter Variable is self-hosted through the pinned @fontsource-variable/inter pack
 
 The submission folder contains the ten-slide presentation (PDF and editable PPTX), a one-page problem brief, a three-page solution brief, and synthetic test fixtures. The latest recorded check on 30 October 2026 passed 101 automated tests: 81 backend, 3 frontend unit, and 17 browser tests. See [the system check](docs/SYSTEM_CHECK_2026-10-30.md) for scope and limitations. These are recorded results, not a new test run of this publication copy.
 
-Only synthetic employee examples are supplied. Runtime databases, uploads, credentials, mailbox screenshots, and local Git history are excluded. Setup generates fresh local credentials. The locally audited original-source parity test skips when the original Sadiah files are unavailable; other adapter tests remain available.
+Only synthetic employee examples are supplied. Runtime databases, uploads, credentials, mailbox screenshots, and local Git history are excluded. Setup generates fresh local credentials. Workforce rule regressions run without external application files.

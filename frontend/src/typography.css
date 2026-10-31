@@ -1,4 +1,3 @@
-/* Crisp shared typography. Preserve layout and the HUMAIN surface/brand palette. */
 :root {
   --text-primary: #132d38;
   --text-secondary: #354f5c;
@@ -269,7 +268,6 @@ button:disabled {
 .chart-panel .recharts-bar-rectangle {
   filter: none;
 }
-/* Keep the existing teal-to-green heading, with legible stops on white. */
 .chat-welcome h2 em {
   background-image: linear-gradient(100deg, #006b78, #00765f 65%, #4d7412);
 }

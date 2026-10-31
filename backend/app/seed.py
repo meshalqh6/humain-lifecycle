@@ -1,4 +1,4 @@
-"""Idempotent synthetic-only seed. Never reads the original employee workbook."""
+"""Idempotent synthetic-only seed."""
 
 from datetime import timedelta
 from sqlalchemy import select

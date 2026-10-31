@@ -78,7 +78,8 @@ export function RosterImport() {
             <p className="subtle">
               Use synthetic data in this development workspace. Expected legacy
               headers: Employee Name, Iqama Number, Nationality, Profession,
-              Email and the Sadiah date columns. For real records, use the
+              Email, Contract Start Date, Contract End Date, Iqama Expiry Date
+              and Work Permit Expiry. For real records, use the
               authenticated API with synthetic=false only after explicit
               authorization.
             </p>

@@ -1,6 +1,6 @@
 # Hackathon walkthrough
 
-Start with scripts/start.ps1 and sign in with the generated local admin password. Confirm PostgreSQL/Ollama status under Integrations and open Mailpit at http://127.0.0.1:8025. Use synthetic data only. The app never loads original Sadiah employees.
+Start with scripts/start.ps1 and sign in with the generated local admin password. Confirm PostgreSQL/Ollama status under Integrations and open Mailpit at http://127.0.0.1:8025. Use synthetic data only. The app never imports external employee records automatically.
 
 ## Scenario A — an employee’s first day
 

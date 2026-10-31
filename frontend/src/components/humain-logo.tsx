@@ -14,8 +14,6 @@ export function HumainLogo({
   );
 }
 
-// Filled geometric capitals match the supplied CHAT logo's bold silhouette.
-// The supplied raster wordmark does not include an installable brand font.
 export function LifecycleWordmark() {
   return (
     <svg

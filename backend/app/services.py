@@ -7,7 +7,7 @@ from fastapi import HTTPException
 from sqlalchemy import select, text, func
 from app.database import models as m
 from app.schemas import EmployeeInput, TaskInput
-from app.adapters import sadiah
+from app.adapters import hr_rules
 
 
 def today():
@@ -85,7 +85,7 @@ def saudization(db):
         [{"Nationality": e.nationality, "Profession": e.profession} for e in workforce(db)],
         columns=["Nationality", "Profession"],
     )
-    return sadiah.compute_saudization(
+    return hr_rules.compute_saudization(
         frame,
         {
             "nationality_column": "Nationality",
@@ -109,7 +109,6 @@ def saudization(db):
 
 
 def deadlines(db, days=30, kind="all"):
-    # Reuse original logic, injecting the explicitly selected Riyadh calendar date.
     employees = workforce(db)
     names = {e.id: e for e in employees}
     records = [
@@ -120,7 +119,7 @@ def deadlines(db, days=30, kind="all"):
         if contract.employee_id in names:
             records.append({"Employee Name": contract.employee_id, "Contract End Date": contract.end_date})
     fieldmap = {"Contract End Date": "contract", "Iqama Expiry Date": "iqama", "Work Permit Expiry": "work_permit"}
-    # Original code references global date; copy the function with a private globals dictionary, without mutation.
+    # Use Riyadh's calendar without mutating shared function globals.
     import types
 
     class RiyadhDate:
@@ -128,7 +127,7 @@ def deadlines(db, days=30, kind="all"):
         def today():
             return today()
 
-    fn = types.FunctionType(sadiah.find_expiring.__code__, {**sadiah.find_expiring.__globals__, "date": RiyadhDate})
+    fn = types.FunctionType(hr_rules.find_expiring.__code__, {**hr_rules.find_expiring.__globals__, "date": RiyadhDate})
     alerts = fn(
         pd.DataFrame(records),
         {"name_column": "Employee Name", "date_columns_to_check": list(fieldmap), "alert_window_days": days},

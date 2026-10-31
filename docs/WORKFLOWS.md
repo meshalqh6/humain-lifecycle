@@ -14,7 +14,7 @@ Supported workflow states: CREATED, DOCUMENT_RECEIVED, EXTRACTING, VALIDATING, R
 
 ## Renewal monitoring
 
-Deadlines are derived from employees and active contracts using the audited Sadiah inclusive-window logic. A scan persists or resolves alerts. Approved reminders are keyed by employee/kind/due date, prepared from approved templates, and checked against the actual due date and exact allowlist. SMTP execution records status and stable message ID. Repeating the same query returns the accepted receipt and records duplicate suppression in its outcome. Renewed due dates create a new notification identity.
+Deadlines are derived from employees and active contracts using the tested inclusive-window rules. A scan persists or resolves alerts. Approved reminders are keyed by employee/kind/due date, prepared from approved templates, and checked against the actual due date and exact allowlist. SMTP execution records status and stable message ID. Repeating the same query returns the accepted receipt and records duplicate suppression in its outcome. Renewed due dates create a new notification identity.
 
 The scheduler runs every 30 seconds while FastAPI is alive; its daily job is serialized by row lock. Pre-acceptance failures may retry up to three times. Uncertain SENDING/UNKNOWN outcomes never auto-retry. The local startup recovery marks interrupted model workflows failed and interrupted sends unknown. Multi-process startup would require leases/heartbeats and is outside this single-host demo.
 

@@ -1,4 +1,4 @@
-"""Explicitly authorized legacy roster import. Never opens the original Sadiah files."""
+"""CSV/XLSX roster validation and preview."""
 
 import io
 import hashlib
@@ -6,7 +6,7 @@ from datetime import date
 import pandas as pd
 from fastapi import HTTPException
 from sqlalchemy import select
-from app.adapters import sadiah
+from app.adapters import hr_rules
 from app.database import models as m
 from app.schemas import EmployeeInput
 from app.services import lock, audit
@@ -52,7 +52,7 @@ def parse(content, filename, synthetic):
                 ("Contract End Date", "end_date"),
             ]:
                 raw = values.get(legacy, "")
-                value = sadiah.normalize_date(raw)
+                value = hr_rules.normalize_date(raw)
                 if raw and value is None:
                     raise ValueError("Invalid date in " + legacy)
                 normalized[key] = value

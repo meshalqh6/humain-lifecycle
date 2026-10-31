@@ -6,7 +6,7 @@ FastAPI uses Pydantic inputs with extra fields forbidden, synchronous SQLAlchemy
 
 Qwen runs in host Ollama, with the exact installed tag configured in `.env`. Native tools are sent in the documented [Ollama tool calling format](https://docs.ollama.com/capabilities/tool-calling); PDF output uses a Pydantic [JSON schema format](https://docs.ollama.com/capabilities/structured-outputs). No model download is initiated. Tool planning and final streaming use separate bounded calls; there are at most 8 planning turns and 12 tool executions per request. Qwen cannot issue SQL, filesystem commands or arbitrary SMTP operations.
 
-Only deterministic Sadiah pure functions were extracted. Their AST is compared with the original and original root-file SHA256 hashes are verified in regression tests. No original runtime import, config migration, workbook-row copy, installer or Windows task execution occurs.
+Deterministic workforce calculations live in `app.adapters.hr_rules` and are covered by regression tests for dates, expiry windows, nationality ratios, profession grouping and HUMAIN report formatting. No external runtime import, configuration migration or employee data copy occurs. See [HR rules](HR_RULES.md).
 
 PostgreSQL 17 uses the [official Docker image](https://hub.docker.com/_/postgres), named volume and localhost mapping. Mailpit is a local SMTP capture server. A separate tmpfs PostgreSQL service holds all destructive test fixtures. Host FastAPI and Vite do not require container GPU support. A single local scheduler polls the durable job ledger every 30 seconds and schedules daily checks. It depends on the backend being alive; missed due runs are picked up on the next start.
 

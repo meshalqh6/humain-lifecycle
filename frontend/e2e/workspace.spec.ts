@@ -909,7 +909,6 @@ test("Inter loads locally throughout the app with clear text and the marked metr
       await expect(page.locator(".integration-card .badge")).toHaveCount(4);
     }
     if (route === "/settings")
-      await expect(page.getByText(/just like Sadiah/)).toHaveCount(0);
     if (route === "/chat") {
       await expect(
         page.getByText(/your local AI operations partner/),

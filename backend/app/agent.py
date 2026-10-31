@@ -257,9 +257,6 @@ def run_chat(data, user_id):
                 calls = response.get("tool_calls") or []
                 messages.append(response)
                 if not calls:
-                    # Final text is streamed by Qwen with committed tool outcomes in context.
-                    # Keep the actual user request intact. The previous instruction
-                    # replaced it with an HR-outcome report even for greetings.
                     guidance = (
                         "Answer the latest user request directly and concisely. No tools were used in this turn. "
                         "For greetings, thanks and questions about your capabilities, respond naturally without a tool disclaimer "
